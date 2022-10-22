@@ -1,24 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import FormPage from "./components/pages/FormPage";
+import PalettePage from "./components/pages/Palette/PalettePage";
+import Navigate from "./components/ui/Navigate";
+import { styles } from "./utils/stylesClasses";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="bg-black py-10 min-h-[100vh]">
+      <div className={styles.container}>
+        <div className={styles.wrapper}>
+          <Navigate />
+          <Routes>
+            <Route path="/" element={<FormPage />} />
+            <Route path="/palette" element={<PalettePage />} />
+          </Routes>
+        </div>
+      </div>
     </div>
   );
 }
