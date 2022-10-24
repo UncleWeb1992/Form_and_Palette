@@ -1,10 +1,10 @@
-import { FC } from "react";
+import { FC, MouseEvent } from "react";
 import { styles } from "../../utils/stylesClasses";
 
 interface IButtonProps {
   children: React.ReactNode;
   disabled?: boolean;
-  onClick?: () => void;
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
 }
 
 const Button: FC<IButtonProps> = ({ disabled, children, onClick }) => {

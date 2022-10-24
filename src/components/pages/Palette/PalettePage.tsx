@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, MouseEvent, useState } from "react";
 import { SketchPicker } from "react-color";
 import { v4 as uuid } from "uuid";
 import Button from "../../common/Button";
@@ -12,7 +12,8 @@ const PalettePage: FC = () => {
   const [color, setColor] = useState("red");
   const [hidden, setHidden] = useState(true);
 
-  const addedColor = () => {
+  const addedColor = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
     const data = {
       id: uuid(),
       color,
@@ -30,10 +31,7 @@ const PalettePage: FC = () => {
 
   return (
     <div className="flex justify-between" onClick={() => setHidden(true)}>
-      <div
-        className="w-[35%] mt-4 py-2 px-4"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className="w-[35%] mt-4 py-2 px-4">
         <PaletteList data={paletteList} />
         <Button onClick={addedColor}>Добавить цвет</Button>
       </div>
